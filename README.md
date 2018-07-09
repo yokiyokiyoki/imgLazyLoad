@@ -5,5 +5,5 @@
 ## 三种高度
 
 - 图片距离顶部高度：el.offsetTop
-- 窗口实际高度：document.body.scrollHeight
-- 滚动条滚动的高度：document.body.scrollTop
+- 视窗高度：window.innerHeight
+- 滚动条滚动的高度：el.scrollTop
