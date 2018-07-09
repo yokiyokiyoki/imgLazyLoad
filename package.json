@@ -1,0 +1,22 @@
+{
+  "name": "imglazyload",
+  "version": "1.0.0",
+  "description": "> 原理是非首屏的图片先赋予一个默认的图片地址，直到图片出现在视窗之内，才给它加载正确的资源",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yokiyokiyoki/imgLazyLoad.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yokiyokiyoki/imgLazyLoad/issues"
+  },
+  "homepage": "https://github.com/yokiyokiyoki/imgLazyLoad#readme",
+  "dependencies": {
+    "http-server": "^0.11.1"
+  }
+}
