@@ -10,12 +10,11 @@
 
 <body>
     <div id="app">
-        <div class="load img">尚未出现在视窗，加载的是默认图片</div>
+        <!-- <div class="load img">尚未出现在视窗，加载的是默认图片</div> -->
     </div>
     <script>
+        let windowHeight = window.innerHeight
         let imgArr = Array(100).fill('image')
-
-
         let images = document.getElementsByClassName('img')
         let app = document.getElementById('app')
         imgArr.forEach((item) => {
@@ -24,23 +23,48 @@
             div.innerText = '尚未出现在视窗（我是默认图片）'
             app.appendChild(div)
         })
+        //没有滚动的时候，图片在视窗内的要先加载
+        mountedImg()
 
-        window.onscroll = function (e) {
-            let scrollTop = document.documentElement.scrollTop
-            let windowHeight = window.innerHeight
-            //懒加载
+
+        window.addEventListener('scroll', throttle())
+
+        //节流函数，在一定时间内不触发该函数
+        function throttle() {
+            let canRun = true
+            return function () {
+                if (canRun) {
+                    canRun = false
+                    let scrollTop = document.documentElement.scrollTop
+
+                    //懒加载
+                    for (let i = 0; i < images.length; i++) {
+                        let imgHeight = images[i].offsetTop
+                        // console.log(imgHeight, scrollTop, windowHeight)
+                        if (imgHeight < scrollTop + windowHeight) {
+                            setTimeout(() => {
+                                images[i].innerText = '出现在视窗（这是正确的图片）'
+                            }, 500)
+                        }
+                    }
+                    setTimeout(() => {
+                        canRun = true
+                    }, 100)
+                }
+            }
+        }
+
+        function mountedImg() {
             for (let i = 0; i < images.length; i++) {
                 let imgHeight = images[i].offsetTop
                 // console.log(imgHeight, scrollTop, windowHeight)
-                if (imgHeight < scrollTop + windowHeight) {
+                if (imgHeight < windowHeight) {
                     setTimeout(() => {
                         images[i].innerText = '出现在视窗（这是正确的图片）'
                     }, 1000)
                 }
             }
         }
-
-        console.log(images, imgArr, app)
     </script>
 </body>
 
