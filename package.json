@@ -4,7 +4,7 @@
   "description": "> 原理是非首屏的图片先赋予一个默认的图片地址，直到图片出现在视窗之内，才给它加载正确的资源",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server -a 127.0.0.1 -p 8091"
   },
   "repository": {
     "type": "git",
