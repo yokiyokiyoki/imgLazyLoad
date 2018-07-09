@@ -6,4 +6,4 @@
 
 - 图片距离顶部高度：el.offsetTop
 - 视窗高度：window.innerHeight
-- 滚动条滚动的高度：el.scrollTop
+- 滚动条滚动的高度：document.documentElement.scrollTop(如果是以 html 为根元素，即写了 DTD；如果没写则是 document.body.scrollTop,是以 body 为根元素)

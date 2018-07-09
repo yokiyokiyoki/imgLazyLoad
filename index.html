@@ -25,8 +25,8 @@
             app.appendChild(div)
         })
 
-        window.addEventListener('scroll', () => {
-            let scrollTop = document.getElementById('app').scrollTop
+        window.onscroll = function (e) {
+            let scrollTop = document.documentElement.scrollTop
             let windowHeight = window.innerHeight
             //懒加载
             for (let i = 0; i < images.length; i++) {
@@ -38,7 +38,7 @@
                     }, 3000)
                 }
             }
-        })
+        }
 
         console.log(images, imgArr, app)
     </script>
