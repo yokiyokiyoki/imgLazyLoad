@@ -36,20 +36,17 @@
                 if (canRun) {
                     canRun = false
                     let scrollTop = document.documentElement.scrollTop
-
                     //懒加载
                     for (let i = 0; i < images.length; i++) {
                         let imgHeight = images[i].offsetTop
                         // console.log(imgHeight, scrollTop, windowHeight)
                         if (imgHeight < scrollTop + windowHeight) {
-                            setTimeout(() => {
-                                images[i].innerText = '出现在视窗（这是正确的图片）'
-                            }, 500)
+                            images[i].innerText = '出现在视窗（这是正确的图片）'
                         }
                     }
                     setTimeout(() => {
                         canRun = true
-                    }, 100)
+                    }, 1000)
                 }
             }
         }
@@ -61,7 +58,7 @@
                 if (imgHeight < windowHeight) {
                     setTimeout(() => {
                         images[i].innerText = '出现在视窗（这是正确的图片）'
-                    }, 1000)
+                    }, 500)
                 }
             }
         }
