@@ -5,10 +5,42 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>懒加载</title>
+    <link rel="stylesheet" href="./src/index.css">
 </head>
 
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <div class="load img">尚未出现在视窗，加载的是默认图片</div>
+    </div>
+    <script>
+        let imgArr = Array(100).fill('image')
+
+        let scrollHeight = document.body.scrollHeight
+        let images = document.getElementsByClassName('img')
+        let app = document.getElementById('app')
+        imgArr.forEach((item) => {
+            let div = document.createElement('div')
+            div.classList = 'load img'
+            div.innerText = '尚未出现在视窗，加载的是默认图片'
+            app.appendChild(div)
+        })
+        images = [...images]
+        window.addEventListener('scroll', () => {
+            let scrollTop = document.body.scrollTop
+            //懒加载
+            images.forEach((item) => {
+                let imgHeight = item.offsetTop
+                console.log(imgHeight, scrollTop, scrollHeight)
+                if (imgHeight < scrollTop + scrollHeight) {
+                    setTimeout(() => {
+                        item.innerText = '出现在视窗，可以加载图片'
+                    }, 1000)
+                }
+            })
+        })
+
+        console.log(images, imgArr, app)
+    </script>
 </body>
 
 </html>
