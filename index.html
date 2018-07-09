@@ -21,7 +21,7 @@
         imgArr.forEach((item) => {
             let div = document.createElement('div')
             div.classList = 'load img'
-            div.innerText = '尚未出现在视窗，加载的是默认图片'
+            div.innerText = '尚未出现在视窗（我是默认图片）'
             app.appendChild(div)
         })
 
@@ -31,11 +31,11 @@
             //懒加载
             for (let i = 0; i < images.length; i++) {
                 let imgHeight = images[i].offsetTop
-                console.log(imgHeight, scrollTop, windowHeight)
+                // console.log(imgHeight, scrollTop, windowHeight)
                 if (imgHeight < scrollTop + windowHeight) {
                     setTimeout(() => {
-                        images[i].innerText = '出现在视窗，可以加载图片'
-                    }, 3000)
+                        images[i].innerText = '出现在视窗（这是正确的图片）'
+                    }, 1000)
                 }
             }
         }
